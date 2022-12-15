@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html style="height: 72px;">
+<head lang="en">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body style="font-family: 'Lato', sans-serif;color: #202122;">
+<center>
+    <div class="alert alert-warning" role="alert" id="alert_div">
+    Not Active Site
+    <button type="button" class="btn btn-primary" onclick="publish_site()" id="btn-publish">Activate</button>
+    </div>
+</center>
+  <script type="text/javascript">
+  function publish_site(){
+    $.ajax({
+    url: 'activate.php',
+    type: 'POST',
+    success: function(result){
+        console.log(result);
+        /* if (result === "success") {
+            document.getElementById("alert_div").className = "alert alert-success";
+            document.getElementById("btn-publish").disabled = true;
+        } */
+      }
+  });
+ }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>
