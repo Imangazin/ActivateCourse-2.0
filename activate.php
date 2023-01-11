@@ -69,7 +69,7 @@ if(($lti_auth['key'] == $toolKey) && ($roleId == "Instructor" || $roleId == "Adm
     $offeringDetails = doValenceRequest('GET','/d2l/api/lp/' . $config['LP_Version'] . '/courses/'. $orgUnitId);
 
     if ($offeringDetails['Code']==200){
-        $currentDate = new DateTime();
+        $currentDate = new DateTime('UTC');
         $postOfferingData = array("Name"=>$offeringDetails['response']->Name,
                                   "Code"=>$offeringDetails['response']->Code,
                                   "StartDate"=>$currentDate->format("Y-m-d\TH:i:s.u\Z"),
