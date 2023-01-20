@@ -26,7 +26,7 @@ function brockOrgStatus (result) {
     if (result.EndDate != null){
         var endDate = new Date(result.EndDate);
 		if (result.IsActive == false && endDate.getTime() > today){
-			document.getElementById('brock-org-status').innerHTML = '<iframe src="/d2l/common/dialogs/quickLink/quickLink.d2l?ou={orgUnitId}&amp;type=lti&amp;rcode=E3441D29-BE5A-4BE7-AA7C-8C696DC9DDED-80367&amp;srcou=6606" style="overflow-y: hidden; width: 100%; height: 96px;" scrolling="no" frameborder="0"> </iframe>';
+			document.getElementById('brock-org-status').innerHTML = '<iframe src="" style="overflow-y: hidden; width: 100%; height: 96px;" scrolling="no" frameborder="0"> </iframe>';
 		} else	if (result.IsActive == true && dateActive == false) {
 			document.getElementById('brock-org-status').innerHTML = message; //Place message in div
                 }
