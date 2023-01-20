@@ -1,15 +1,6 @@
-<custom-style>
-<style>
-.brock-org-status {
-color: #664d03;
-background-color: #fff3cd;
-border-color: #ffecb5;
-text-align: center;
-}  
-</style>
-</custom-style>
-<div id="brock-org-status"></div>
+<div id="brock-org-status" class="brock-org-status" style="color: #664d03; background-color: #fff3cd; border-color: #ffecb5; height: 96px; display: flex; align-items: center;"></div>
 <script>
+  //Created by Matt Clare Saturday September 3, 2022 https://github.com/mclare/edtech_styles/blob/main/widgets/get-site-status.html
 function format(resp) {
   try {
     var json = JSON.parse(resp);
@@ -20,8 +11,7 @@ function format(resp) {
 }
 
 function brockOrgStatus (result) {
-	dateMessage = "";
-	message = "";
+	message = '<p style="flex:1; text-align:center;"><strong>Site Status:</strong> Course <a href=\"/d2l/lp/manageCourses/course_offering_info_viewedit.d2l?ou={OrgUnitId}\">Start Date</a> in the future. Students unable to access site.</p>';
 
 	dateActive = true;
     today = new Date();
@@ -29,19 +19,17 @@ function brockOrgStatus (result) {
     if (result.StartDate != null) {
 		var startDate = new Date(result.StartDate);
 		if (startDate.getTime() > today) { //Started
-			dateActive = false;
-			dateMessage = dateMessage + " Course Start Date in the future. Students unable to access site.";
+			dateActive = false;		
 		}
 	}
+  
     if (result.EndDate != null){
         var endDate = new Date(result.EndDate);
 		if (result.IsActive == false && endDate.getTime() > today){
-			document.getElementById('brock-org-status').innerHTML = '<iframe src="" style="overflow-y: hidden; height: 82px; width: 100%;" scrolling="no" frameborder="0"> </iframe>';
+			document.getElementById('brock-org-status').innerHTML = '<iframe src="/d2l/common/dialogs/quickLink/quickLink.d2l?ou={orgUnitId}&amp;type=lti&amp;rcode=E3441D29-BE5A-4BE7-AA7C-8C696DC9DDED-80367&amp;srcou=6606" style="overflow-y: hidden; width: 100%; height: 96px;" scrolling="no" frameborder="0"> </iframe>';
 		} else	if (result.IsActive == true && dateActive == false) {
-			message = "<strong>Site Status:</strong> "+dateMessage;
-			document.getElementById('brock-org-status').innerHTML = message; //Place message in div}
-			document.getElementById('brock-org-status').className = "brock-org-status";
-		}
+			document.getElementById('brock-org-status').innerHTML = message; //Place message in div
+                }
 		else {
 			document.getElementById('brock-org-status').parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.style.display='none'; //Remove this widget
 		}
