@@ -26,6 +26,7 @@ function brockOrgStatus (result) {
     if (result.EndDate != null){
         var endDate = new Date(result.EndDate);
 		if (result.IsActive == false && endDate.getTime() > today){
+			// add quicklink to LTI tool within iframe's src parameter
 			document.getElementById('brock-org-status').innerHTML = '<iframe src="" style="overflow-y: hidden; width: 100%; height: 96px;" scrolling="no" frameborder="0"> </iframe>';
 		} else	if (result.IsActive == true && dateActive == false) {
 			document.getElementById('brock-org-status').innerHTML = message; //Place message in div
