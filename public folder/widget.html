@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html><head>
+  <link rel="stylesheet" href="">
+  <script src=""></script>
+</head><body>
+<div id="course_offering_status"></div>
+
+<script src=""></script>
+
+<script>
+  window.addEventListener('load', function () {
+    fetch("/d2l/api/lp/1.45/enrollments/myenrollments/{OrgUnitId}/access")
+    .then(function(response) {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Network response was not ok.');
+    })
+      .then(function (data) { 
+        result = format(data);
+        courseOfferingStatus(result, {OrgUnitId}, {RoleId});
+      });
+})
+</script></body></html>
