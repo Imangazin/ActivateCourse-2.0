@@ -3,7 +3,11 @@ LTI 1.0 tool to activate Brightspace course offerings
 
 ## instructions
 * Create Brightspace ID Key Authorization app
-* Fillout the info.php file
+* Fillout the info.php file and config.js file.
 * Add the tool as external learning tool to Brightspace
-* Optional: Create quicklink in order to add the tool as widget, then add appropriate release conditions or handle it with extra js code
-* Optional: Copy paste the font-end.js code into custom widget and update the src parameter of the iframe with qicklink link to LTI tool.
+
+## Public folder 
+* activation_js.js, config.js and activation_styles.css files should be uploaded into BLE public files area.
+ 
+##
+* widget.html file is a content for your widget. Need to add js and css paths.
