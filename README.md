@@ -7,7 +7,7 @@ LTI 1.0 tool to activate Brightspace course offerings
 * activation_js.js, config.js and activation_styles.css should be placed into Brightspace's Public Files.
 * Add the tool as External Learning Tool to Brightspace
   * New Tool Provider
-  * Launch Point: https://<your domain>/BLE/ActivateCourse-2.0/
+  * Launch Point: should point index.php file in clients server
   * OAuth Signature Method: HMAC-SHA1
   * Secret: generate one, and populate the $lti_auth = array('key' => '', 'secret' => ''); in info.php as well
   * Check "Use custom tool consumer information instead of default"
@@ -20,7 +20,7 @@ LTI 1.0 tool to activate Brightspace course offerings
   * Manage External Learning Tool Links
   * New Link
   * Title: Any
-  * URL: https://<Your domain>/BLE/ActivateCourse-2.0/
+  * URL: should point index.php file in clients server
   * Allow users to view this link. Note this setting will make the tool available everywhere in BLE. Should be toggled while setting it up. Once the tool is set, turn it off.
   * Check all "Use link security settings"
   * Make it available to all course offerings under organization.
