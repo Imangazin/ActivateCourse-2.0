@@ -1,6 +1,15 @@
 # ActivateCourse
-LTI 1.0 tool to activate Brightspace course offerings
+LTI 1.0 tool to activate Brightspace course offerings. The tool should be called from the widget placed in the course offering. Current logic: 
+* if the course has no end date then it is hidden
+* if the course is inactive and the end date in the future then it shows activate LTI button with the message specified in the config.js (pre_start_date_inactive)
+* if the course is active and the start date in the future then it shows activate LTI button with the message specified in the config.js (pre_start_date_active)
+* if the course is active and 14 days until the end date then the message specified in the config.js (post-active-state), hidden from the learner roles
+* active and the end date in the past then learner roles see (post_date_active_student), instructional team role see (post_date_active_instructor) with the LTI button to deactivate the course
+* inactive and the end date in the past then instructional team roles see (post_date_inactive)
 
+Feel free to change the logic in your instance. 
+
+  
 ## instructions
 * Create Brightspace ID Key Authorization app
 * Fillout the info.php file and config.js file. Note that 'host' takes url without "https:\\".
