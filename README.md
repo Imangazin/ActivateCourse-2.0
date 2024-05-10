@@ -35,6 +35,8 @@ LTI 1.0 tool to activate Brightspace course offerings
 * config.js file
   * lti_link : Once the external learning tool and link are set up, open a Brightspace text editor anywhere (content, announcement), and add the created External Learning tool from Insert Quicklink and copy the link from the text editor's source code.
   * widget_title: must match the widget name
+  * instructor_roles: populate by intructional team role ids (integer)
+  * learner_roles: populate by learner role ids (integer)
   * populate the rest with your language
 * activation_js.js file modifies/replaces some keywords from the config.js messages (see messageFormat function), if you do not use those keywords it should ignore, otherwise feel free to make any modifications. 
 * info.php file
