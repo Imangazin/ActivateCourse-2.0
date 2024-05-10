@@ -62,7 +62,7 @@ function courseOfferingStatus (result, orgUnitId, role) {
 			course_offering_status.classList.add("pre-active-state");
 			course_offering_status.innerHTML = messageFormat(pre_start_date_inactive);
 			//add activate button to admins and instructor
-			if (role==105 || role==116 || role==109){
+			if (instructor_roles.includes(role)){
 				addButton(course_offering_status, 'Activate Now', messageFormat(lti_link));
 			}
 		} else if (active && start_date>today){
@@ -70,13 +70,13 @@ function courseOfferingStatus (result, orgUnitId, role) {
 			course_offering_status.classList.add("pre-active-state");
 			course_offering_status.innerHTML = messageFormat(pre_start_date_active);
 			//add activate button to admins and instructor
-			if (role==105 || role==116 || role==109){
+			if (instructor_roles.includes(role)){
 				addButton(course_offering_status, 'Activate Now', messageFormat(lti_link));
 			}
 		} else if (active && daysUntilEndDate(end_date, today) <= 14){
 			//Countdown Status: 14 days until date.
 			//Hide from student and readonly
-			if (role == 110 || role == 111) { 
+			if (learner_roles.includes(role)) { 
 				hideTheWidget();	
 			  } else {
 				course_offering_status.innerHTML = messageFormat(countdown_status);
@@ -84,14 +84,14 @@ function courseOfferingStatus (result, orgUnitId, role) {
 			  }
 		} else if (active && end_date<today){
 			//Post <date>, Active
-			if (role == 110 || role == 111) {
+			if (learner_roles.includes(role)) {
 				course_offering_status.classList.add("post-active-state");
 				course_offering_status.innerHTML = messageFormat(post_date_active_student);
 			  } else {
 				course_offering_status.classList.add("post-active-state");
 				course_offering_status.innerHTML = messageFormat(post_date_active_instructor);	
 				//add deactivate button to admins and instructor
-				if (role==105 || role==116 || role==109){
+				if (instructor_roles.includes(role)){
 					addButton(course_offering_status, 'Deactivate Now', messageFormat(lti_link));
 				}
 			}
