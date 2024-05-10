@@ -21,3 +21,9 @@ post_date_inactive = '';
 
 // The widget titel. This parameter is very important, it used to hide the widget when needed.
 widget_title = '';
+
+// Instructional team role IDs. Integer value like 109.
+const instructor_roles = [];
+
+// Learner role IDs. Integer value like 110.
+const learner_roles = [];
