@@ -18,7 +18,7 @@ if(isset($_REQUEST['lti_message_type'])) {    //Is this an LTI Request?
         $userId = preg_match('/_(\d+)/', $context->info['user_id'], $matches) ? $matches[1] : '-1';
         $isAllowed = doValenceRequest('GET','/d2l/api/lp/' . $config['LP_Version'] . '/enrollments/orgUnits/'.$orgUnitId.'/users/'.$userId);
 
-        if ($isAllowed['Code']=200){
+        if ($isAllowed['Code']==200){
           if (!in_array($isAllowed['response']->RoleId, $roles)){
             return;
           }
